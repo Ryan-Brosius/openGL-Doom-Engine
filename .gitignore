@@ -31,6 +31,6 @@
 *.out
 *.app
 
-# Folders
+#Folders
 x64/
-.vs
+.vs/
