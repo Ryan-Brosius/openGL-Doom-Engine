@@ -71,11 +71,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\ryanc\source\repos\openGL-Voxel-Engine\openGL-Voxel-Engine\Libraries\include;$(IncludePath);$(SolutionDir)\openGL-Voxel-Engine\Libraries\include</IncludePath>
+    <IncludePath>C:\Users\ryanc\source\repos\openGL-Voxel-Engine\openGL-Voxel-Engine\Libraries\include;$(IncludePath);$(SolutionDir)\openGL-Voxel-Engine\Libraries\include;$(SolutionDir)\openGL-Voxel-Engine\headers</IncludePath>
     <LibraryPath>C:\Users\ryanc\source\repos\openGL-Voxel-Engine\openGL-Voxel-Engine\Libraries\lib;$(LibraryPath);$(SolutionDir)\openGL-Voxel-Engine\Libraries\lib</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\ryanc\source\repos\openGL-Voxel-Engine\openGL-Voxel-Engine\Libraries\include;$(IncludePath);$(SolutionDir)\openGL-Voxel-Engine\Libraries\include</IncludePath>
+    <IncludePath>C:\Users\ryanc\source\repos\openGL-Voxel-Engine\openGL-Voxel-Engine\Libraries\include;$(IncludePath);$(SolutionDir)\openGL-Voxel-Engine\Libraries\include;$(SolutionDir)\openGL-Voxel-Engine\headers</IncludePath>
     <LibraryPath>C:\Users\ryanc\source\repos\openGL-Voxel-Engine\openGL-Voxel-Engine\Libraries\lib;$(LibraryPath);$(SolutionDir)\openGL-Voxel-Engine\Libraries\lib</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -139,10 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\EBO.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\shader.cpp" />
+    <ClCompile Include="src\VAO.cpp" />
+    <ClCompile Include="src\VBO.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="headers\EBO.h" />
+    <ClInclude Include="headers\shader.h" />
+    <ClInclude Include="headers\VAO.h" />
+    <ClInclude Include="headers\VBO.h" />
     <ClInclude Include="Libraries\include\glad\glad.h" />
     <ClInclude Include="Libraries\include\GLFW\glfw3.h" />
     <ClInclude Include="Libraries\include\GLFW\glfw3native.h" />
@@ -150,6 +158,12 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libraries\lib\glfw3.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shaders\default.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\default.frag" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
