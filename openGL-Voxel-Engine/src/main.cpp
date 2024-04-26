@@ -8,9 +8,25 @@
 
 GLfloat vertices[] =
 {
-    -0.5f, -0.5f, 0.0f,
-    0.5f, -0.5f, 0.0f,
-    0.0f, 0.5f, 0.0f
+    //DRAWING TRIANGLE
+    // POSITIONS            //COLORS
+    -0.5f, -0.5f, 0.0f,     1.0f, 0.0f, 0.0f,
+     0.5f, -0.5f, 0.0f,     0.0f, 1.0f, 0.0f,
+     0.0f,  0.5f, 0.0f,     0.0f, 0.0f, 1.0f,
+
+    //DRAWING THE SQUARE
+    // POSITIONS            //COLORS
+     0.0f,  0.0f, 0.0f,     1.0f, 0.0f, 0.0f,
+     1.0f,  0.0f, 0.0f,     0.0f, 1.0f, 0.0f,
+     0.0f,  1.0f, 0.0f,     0.0f, 0.0f, 1.0f,
+     1.0f,  1.0f, 0.0f,     1.0f, 1.0f, 1.0f
+
+};
+
+GLuint indices[] = {
+    0, 1, 2,
+    3, 4, 5,
+    4, 5, 6
 };
 
 int main(void)
@@ -35,16 +51,23 @@ int main(void)
 
     glViewport(0, 0, 800, 800);
 
+    //Creates shaders
     Shader shader("default.vert", "default.frag");
 
+    //Generates vertex array object
     VAO VAO1;
     VAO1.Bind();
 
+    //Generates vertex buffer
     VBO VBO1(vertices, sizeof(vertices));
+    EBO EBO1(indices, sizeof(indices));
 
-    VAO1.LinkVBO(VBO1, 0);
+    //Links VBO to VAO
+    VAO1.LinkAttrib(VBO1, 0, 3, GL_FLOAT, 6 * sizeof(float), (void*)0);
+    VAO1.LinkAttrib(VBO1, 1, 3, GL_FLOAT, 6 * sizeof(float), (void*)(3 * sizeof(float)));
     VAO1.Unbind();
     VBO1.Unbind();
+    EBO1.Unbind();
 
     while (!glfwWindowShouldClose(window))
     {
@@ -52,7 +75,8 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
         shader.Init();
         VAO1.Bind();
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
+        //glDrawArrays(GL_TRIANGLES, 0, 9);
         glfwSwapBuffers(window);
 
         glfwPollEvents();
@@ -60,6 +84,7 @@ int main(void)
 
     VAO1.Delete();
     VBO1.Delete();
+    EBO1.Delete();
     shader.Delete();
 
     glfwDestroyWindow(window);
