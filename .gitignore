@@ -34,3 +34,6 @@
 #Folders
 x64/
 .vs/
+*.vcxproj*
+*.sln
+libraries/
