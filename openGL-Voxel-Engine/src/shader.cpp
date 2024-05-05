@@ -2,7 +2,7 @@
 
 std::string get_file_contents(const char* filename)
 {
-	std::string path = "Shaders/";
+	std::string path = "Resource/Shaders/";
 	path += filename;
 
 	std::ifstream in(path.c_str(), std::ios::binary);
@@ -45,7 +45,7 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 	glDeleteShader(fragmentShader);
 }
 
-void Shader::Init()
+void Shader::Activate()
 {
 	glUseProgram(ID);
 }
