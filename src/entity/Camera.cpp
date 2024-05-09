@@ -71,6 +71,8 @@ void Camera::Inputs(GLFWwindow* window)
 			Orientation = newOrientation;
 		}
 
+		Orientation = glm::rotate(Orientation, glm::radians(-rotY), Up);
+
 		glfwSetCursorPos(window, (width / 2), (height / 2));
 	}
 
