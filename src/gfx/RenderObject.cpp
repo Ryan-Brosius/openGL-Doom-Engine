@@ -1,9 +1,7 @@
 #include "RenderObject.h"
 
-extern State* state;
-
 RenderObject::RenderObject(GLfloat* vertices, GLsizeiptr verticesSize, GLuint* indices, GLsizeiptr indicesSize, Shader* shader, const char* texture)
-	: shader(shader), texture(state->textureMap->get(texture)), _VBO(vertices, verticesSize), _EBO(indices, indicesSize), nVertices(indicesSize / sizeof(GLuint))
+	: shader(shader), texture(TextureMap::getSingleton(shader).get(texture)), _VBO(vertices, verticesSize), _EBO(indices, indicesSize), nVertices(indicesSize / sizeof(GLuint))
 {
 	_VAO.LinkAttrib(_VBO, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
 	_VAO.LinkAttrib(_VBO, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));

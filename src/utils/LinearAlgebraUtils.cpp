@@ -41,12 +41,12 @@ bool insideTriangle(const glm::vec3& A, const glm::vec3& B, const glm::vec3& C, 
     if (glm::length(n) > 0.001f)
         n = glm::normalize(n);
 
-    float d = glm::dot(n, P - A);
+    float d = glm::dot(n, P - B);
     if (abs(d) > 0.001f)
         return false;
 
-    //Calculates the barycentric coordinates and checks if the
-    //points are in the triangle
+    // Calculates the barycentric coordinates to determine if point is in triangle
+    // Taken from Christer Ericson's Real-Time Collision Detections
     glm::vec3 v0 = C - A;
     glm::vec3 v1 = B - A;
     glm::vec3 v2 = P - A;
@@ -60,6 +60,7 @@ bool insideTriangle(const glm::vec3& A, const glm::vec3& B, const glm::vec3& C, 
     float invDenom = 1 / (dot00 * dot11 - dot01 * dot01);
     float u = (dot11 * dot02 - dot01 * dot12) * invDenom;
     float v = (dot00 * dot12 - dot01 * dot02) * invDenom;
+    float w = 1.0f - u - v;
 
-    return (u >= 0) && (v >= 0) && (u + v <= 1);
+    return (u >= 0 && u <= 1) && (v >= 0 && v <= 1) && (w >= 0 && w <= 1);
 }

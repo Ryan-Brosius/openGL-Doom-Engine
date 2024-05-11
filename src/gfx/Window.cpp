@@ -49,7 +49,6 @@ void Window::setup()
 
     //add objects to state
     state->window = handle;
-    state->textureMap = new TextureMap(gameShader);
     
     //test function in renderer
     gameRenderer->addObjects();

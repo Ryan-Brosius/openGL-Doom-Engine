@@ -12,10 +12,19 @@ namespace fs = std::filesystem;
 class TextureMap
 {
 	public:
-		TextureMap(Shader* shader);
+		static TextureMap& getSingleton(Shader* shader) {
+			static TextureMap instance(shader);
+			return instance;
+		}
+
+		TextureMap(const TextureMap&) = delete;
+		TextureMap operator=(TextureMap const&) = delete;
+
 		Texture* get(std::string texture);
 
 	private:
+		TextureMap(Shader* shader);
+
 		std::map<std::string, std::shared_ptr<Texture>> map;
 		std::string path = "Resource/Textures/";
 };
