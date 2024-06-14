@@ -52,6 +52,9 @@ void Window::setup()
     
     //test function in renderer
     gameRenderer->addObjects();
+
+    //Wireframe test :)
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }
 
 void Window::window_loop()

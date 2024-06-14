@@ -29,7 +29,7 @@ float angleCCW(const glm::vec3& A, const glm::vec3& B, const glm::vec3& C)
 
 bool isConvex(const glm::vec3& vertex_prev, const glm::vec3& vertex, const glm::vec3& vertex_next) 
 {
-    return angleCCW(vertex_prev, vertex, vertex_next) <= M_PI;
+    return angleCCW(vertex_next, vertex, vertex_prev) <= M_PI;
 }
 
 bool insideTriangle(const glm::vec3& A, const glm::vec3& B, const glm::vec3& C, const glm::vec3& P)
