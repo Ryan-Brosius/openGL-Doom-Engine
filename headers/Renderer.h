@@ -6,6 +6,7 @@
 #include "Shader.h"
 #include "RenderLinkedList.h"
 #include "RenderObject.h"
+#include "GFXObjectFactory.h"
 
 class Renderer
 {

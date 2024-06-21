@@ -24,5 +24,4 @@ class RenderObject
 
 		int nVertices;
 };
-
 #endif

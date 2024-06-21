@@ -26,6 +26,8 @@ class Camera
 		float sensitivity = 100.0f;
 		bool active = false;
 
+		int state = 0; // 0 -> game | 1 -> Editor
+
 		Camera(int width, int height, glm::vec3 position);
 		
 		void Matrix(float FOVdeg, float nearPlane, float farPlane, Shader& shader, const char* uniform);

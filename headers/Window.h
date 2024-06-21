@@ -35,8 +35,13 @@ class Window
 
 	private:
 		Camera gameCamera = Camera(WIDTH, HEIGHT, glm::vec3(0.0f, 0.0f, 2.0f));
+		Camera editorCamera = Camera(WIDTH, HEIGHT, glm::vec3(0.0f, 0.0f, 2.0f));
+
 		Shader* gameShader = nullptr;
+		Shader* primitiveShader = nullptr;
+
 		Renderer* gameRenderer = nullptr;
+		Renderer* editorRenderer = nullptr;
 
 };
 
